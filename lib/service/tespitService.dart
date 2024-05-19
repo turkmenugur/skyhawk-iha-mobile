@@ -1,0 +1,6 @@
+class tespitService{
+  Future getTespitData(){
+    
+
+  }  
+}

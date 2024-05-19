@@ -12,5 +12,9 @@ class TespitModel {
     this.tespitZamani,
     this.tespitFotografi
   );
+
+  factory TespitModel.fromJson(Map <String,dynamic> json){
+    return TespitModel(json['id'], json['x'], y, tespitZamani, tespitFotografi) //TODO: yapilacak
+  }
   
 }
