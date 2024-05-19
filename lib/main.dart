@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skyhawk_iha/view/home_view.dart';
+import 'package:skyhawk_iha/view/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Skyhawk',
+      initialRoute: "/",
+      routes: {
+        //'/' : (context) => LoginPage(),
+        '/home': (context) => HomeView(),
+      },
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +39,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Skyhawk IHA'),
+     // home: const MyHomePage(title: 'Skyhawk IHA'),
+      home: LoginPage(),
     );
   }
 }
