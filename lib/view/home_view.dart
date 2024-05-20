@@ -43,7 +43,10 @@ class HomeView extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
         child: Container(
+          color: Colors.transparent,
           height: 50.0,
           child: Center(
             child: ElevatedButton(
@@ -61,6 +64,10 @@ class HomeView extends StatelessWidget {
                 children: [
                   Icon(Icons.phone, color: Colors.white),
                   SizedBox(width: 8),
+                  Text(
+                    'Acil çağrı',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ],
               ),
             ),
