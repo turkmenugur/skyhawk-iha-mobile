@@ -1,36 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:skyhawk_iha/service/call_helper.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+
 
 class MapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //Location
+    // Location
     LatLng initialLocation = LatLng(37.77483, -122.41942); // San Francisco
     // Markers listesi
-    Set<Marker> markers = {
+    List<Marker> markers = [
       Marker(
-        markerId: MarkerId('initial_location'),
-        position: initialLocation,
-        icon: BitmapDescriptor.defaultMarker, // Varsayılan pin ikonu
-        infoWindow: InfoWindow(
-          //Adress detayları yazılacak
-          title: 'Başlangıç Konumu',
-          snippet: 'San Francisco',
+        width: 80.0,
+        height: 80.0,
+        point: initialLocation,
+        child: Icon(Icons.location_pin, color: Colors.red, size: 40),
         ),
-      ),
-    };
+    ];
     return Scaffold(
       body: Stack(
         children: <Widget>[
           // Harita görünümü
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: initialLocation, // Başlangıç konumu, San Francisco
-              zoom: 12,
+          FlutterMap(
+            options: MapOptions(
+              center: initialLocation,
+              zoom: 12.0,
             ),
-            myLocationEnabled: true, // Kullanıcının konumunu göstermek için
-            myLocationButtonEnabled: true, // Kullanıcının konumunu bulmak için buton
-            markers: markers,
+            children: [
+              TileLayer(
+                urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                subdomains: ['a', 'b', 'c'],
+              ),
+              MarkerLayer(
+                markers: markers,
+              ),
+            ],
           ),
           // Buton
           Positioned(
@@ -41,6 +46,7 @@ class MapView extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Butonun yapacağı işlemler
+                  CallHelper.showCallPopup(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red, // Butonun rengi
