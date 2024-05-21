@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:skyhawk_iha/model/tespitModel.dart';
 import 'package:skyhawk_iha/service/tespitService.dart';
+import 'package:skyhawk_iha/view/home_view.dart';
+import 'package:skyhawk_iha/view/login_page.dart';
 
 
 void main() {
