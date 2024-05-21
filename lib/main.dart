@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skyhawk_iha/model/tespitModel.dart';
+import 'package:skyhawk_iha/service/tespitService.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter+=5;
+      _counter += 5;
     });
   }
 
@@ -105,7 +107,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
+            ElevatedButton(
+                onPressed: () async {
+                  var object = tespitService();
+                  TespitModel model = await object.getAllTespitData();
+                  print(model.id);
+                },
+                child: Text("Deneme"))
           ],
         ),
       ),
