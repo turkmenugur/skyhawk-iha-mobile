@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skyhawk_iha/view/map_view.dart';
+import 'package:skyhawk_iha/service/call_helper.dart';
+
 
 class HomeView extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,7 @@ class HomeView extends StatelessWidget {
           child: Center(
             child: ElevatedButton(
               onPressed: () {
-                // Butonun yapacağı işlemler
+                CallHelper.showCallPopup(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
